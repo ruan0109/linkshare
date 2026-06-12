@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料分享 - 网盘链接</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .link-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .link-card.baidu {
+            border-left-color: #FF4500;
+        }
+        .link-card.quark {
+            border-left-color: #4169E1;
+        }
+        .link-card.xunlei {
+            border-left-color: #4169E1;
+        }
+        .platform {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .link-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            word-break: break-all;
+            font-size: 14px;
+            color: #555;
+            user-select: all;
+        }
+        .code-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #856404;
+            user-select: all;
+        }
+        .copy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        .tips {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 资料分享</h1>
+        <p class="subtitle">2026考研+考公+AI办公+模板素材</p>
+
+        <!-- 百度网盘 -->
+        <div class="link-card baidu">
+            <div class="platform">🔴 百度网盘</div>
+            <div class="link-box" id="baidu-link">https://pan.baidu.com/s/1aaq7fEHfgLNctTptLM6WRA?pwd=4jh7</div>
+            <div class="code-box" id="baidu-code">提取码：4jh7</div>
+            <button class="copy-btn" onclick="copyText('baidu-link', this)">复制链接</button>
+            <button class="copy-btn" onclick="copyText('baidu-code', this)" style="margin-top:5px; background:#FF4500;">复制提取码</button>
+        </div>
+
+        <!-- 夸克网盘 -->
+        <div class="link-card quark">
+            <div class="platform">🔵 夸克网盘</div>
+            <div class="link-box" id="quark-link">https://pan.quark.cn/s/bc312849ad77?pwd=wBga</div>
+            <div class="code-box" id="quark-code">提取码：wBga</div>
+            <button class="copy-btn" onclick="copyText('quark-link', this)">复制链接</button>
+            <button class="copy-btn" onclick="copyText('quark-code', this)" style="margin-top:5px; background:#4169E1;">复制提取码</button>
+        </div>
+
+        <!-- 迅雷网盘 -->
+        <div class="link-card xunlei">
+            <div class="platform">🟣 迅雷网盘</div>
+            <div class="link-box" id="xunlei-link">https://pan.xunlei.com/s/VOuvZXFREGMLznzVuc06gY2RA1?pwd=bit7#</div>
+            <div class="code-box" id="xunlei-code">提取码：bit7</div>
+            <button class="copy-btn" onclick="copyText('xunlei-link', this)">复制链接</button>
+            <button class="copy-btn" onclick="copyText('xunlei-code', this)" style="margin-top:5px; background:#8B00D1;">复制提取码</button>
+        </div>
+
+        <p class="tips">💡 提示：点击按钮即可复制，粘贴到对应APP即可打开</p>
+    </div>
+
+    <script>
+        function copyText(elementId, button) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            // 使用现代 Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    button.textContent = '✅ 已复制';
+                    button.classList.add('copied');
+                    setTimeout(() => {
+                        button.textContent = button.textContent.includes('提取码') ? '复制提取码' : '复制链接';
+                        button.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    fallbackCopy(text, button);
+                });
+            } else {
+                fallbackCopy(text, button);
+            }
+        }
+
+        function fallbackCopy(text, button) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                button.textContent = '✅ 已复制';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = button.textContent.includes('提取码') ? '复制提取码' : '复制链接';
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                alert('复制失败，请手动长按选择文字复制');
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>
