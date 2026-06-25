@@ -3,402 +3,349 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>公考资料合集 · 夸克网盘</title>
+  <title>资料分享 - 网盘链接</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f5f6fa;
       min-height: 100vh;
-      color: #e8edf5;
-      padding: 16px;
-    }
-    .container { max-width: 480px; margin: 0 auto; }
-
-    /* 顶部 */
-    .header {
-      text-align: center;
-      padding: 28px 0 20px;
-    }
-    .header .icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, #3b82f6, #60a5fa);
-      border-radius: 16px;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 26px; font-weight: 700; color: #fff;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
-    }
-    .header h1 {
-      font-size: 22px; font-weight: 700;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .header p {
-      font-size: 13px; color: #8899b4; margin-top: 6px;
+      color: #333;
     }
 
-    /* 公告条 */
-    .notice {
-      background: rgba(251,191,36,0.1);
-      border: 1px solid rgba(251,191,36,0.25);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 12.5px; color: #fbbf24;
-      margin-bottom: 18px;
-      line-height: 1.6;
-    }
-
-    /* 分类标签 */
-    .section-title {
-      font-size: 13px; font-weight: 600; color: #60a5fa;
-      margin: 20px 0 10px;
-      padding-left: 10px;
-      border-left: 3px solid #3b82f6;
-    }
-
-    /* 卡片 */
-    .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
+    /* 顶部导航栏 */
+    .navbar {
+      background: #7b68ee;
+      color: #fff;
       padding: 14px 16px;
-      margin-bottom: 10px;
-      transition: all 0.2s;
-      position: relative;
-    }
-    .card:active { background: rgba(255,255,255,0.1); }
-
-    .card-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-    }
-    .card-left { flex: 1; min-width: 0; }
-    .card-num {
-      display: inline-block;
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      color: #fff; font-size: 11px; font-weight: 700;
-      padding: 2px 8px; border-radius: 6px;
-      margin-bottom: 6px;
-    }
-    .card-num.green { background: linear-gradient(135deg, #10b981, #059669); }
-    .card-num.purple { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
-    .card-title {
-      font-size: 14.5px; font-weight: 600; color: #e8edf5;
-      line-height: 1.4; word-break: break-all;
+      text-align: center;
+      font-size: 17px; font-weight: 600;
+      position: sticky; top: 0; z-index: 10;
     }
 
-    /* 提取码 */
-    .code-row {
+    /* 主卡片 */
+    .main-card {
+      margin: 14px 12px 20px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .title-row {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 4px;
+    }
+    .title-icon {
+      font-size: 32px;
+    }
+    .main-title {
+      font-size: 26px; font-weight: 700; color: #222;
+    }
+    .subtitle {
+      font-size: 15px; color: #888;
+      margin-left: 44px; margin-bottom: 22px;
+    }
+
+    /* 分隔线 */
+    .divider {
+      height: 1px; background: #eee; margin: 20px 0 18px;
+    }
+
+    /* 资源项 */
+    .item {
+      border-left: 3.5px solid transparent;
+      border-radius: 12px;
+      padding: 14px 14px 2px;
+      margin-bottom: 16px;
+      background: #fafbfc;
+    }
+    .item.baiduyun { border-left-color: #e74c3c; }
+    .item.quark { border-left-color: #3498db; }
+
+    .item-header {
       display: flex; align-items: center; gap: 8px;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
-    .code-label { font-size: 12.5px; color: #8899b4; white-space: nowrap; }
-    .code-value {
-      font-size: 14px; font-weight: 700; color: #fbbf24;
-      background: rgba(251,191,36,0.12);
-      padding: 3px 10px; border-radius: 6px;
-      letter-spacing: 2px;
+    .dot {
+      width: 13px; height: 13px; border-radius: 50%;
     }
-    .copy-code {
-      font-size: 11.5px; color: #60a5fa;
-      background: none; border: 1px solid rgba(96,165,250,0.3);
-      border-radius: 6px; padding: 3px 8px;
-      cursor: pointer; white-space: nowrap;
+    .dot.red { background: #e74c3c; }
+    .dot.blue { background: #3498db; }
+    .platform-name {
+      font-size: 16px; font-weight: 700; color: #333;
     }
 
-    /* 打开链接按钮 */
-    .open-btn {
-      display: block;
-      width: 100%;
-      margin-top: 12px;
-      padding: 10px 0;
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      color: #fff; font-size: 14px; font-weight: 600;
-      border: none; border-radius: 10px;
-      text-align: center; text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 2px 12px rgba(37,99,235,0.3);
-    }
-    .open-btn:active { opacity: 0.85; }
-
-    /* 子链接 */
-    .sub-links { margin-top: 12px; }
-    .sub-item {
-      background: rgba(255,255,255,0.04);
-      border-radius: 10px;
-      padding: 10px 12px;
+    .url-box {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 9px;
+      padding: 11px 13px;
+      font-size: 13px; color: #555;
+      word-break: break-all; line-height: 1.55;
       margin-bottom: 8px;
     }
-    .sub-item:last-child { margin-bottom: 0; }
-    .sub-title { font-size: 13px; color: #c4d0e8; margin-bottom: 6px; }
-    .sub-code-row {
-      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-    }
-    .sub-code {
-      font-size: 12.5px; font-weight: 700; color: #fbbf24;
-      background: rgba(251,191,36,0.1);
-      padding: 2px 8px; border-radius: 5px;
-    }
-    .sub-open {
-      font-size: 12px; color: #60a5fa;
-      text-decoration: none; margin-left: auto;
+
+    .code-bar {
+      display: inline-block;
+      background: #fff9e6;
+      border: 1px solid #f0d86e;
+      border-radius: 9px;
+      padding: 8px 16px;
+      font-size: 14.5px; font-weight: 600;
+      color: #d4a017;
+      margin-bottom: 10px;
     }
 
-    /* 底部 */
-    .footer {
+    .btn-row { display: flex; gap: 10px; }
+
+    .btn {
+      flex: 1;
+      border: none; border-radius: 9px;
+      padding: 11px 0;
+      font-size: 15px; font-weight: 600;
+      color: #fff; cursor: pointer;
       text-align: center;
-      padding: 24px 0 32px;
-      font-size: 11.5px; color: #4a5a74;
+      transition: opacity 0.15s;
     }
+    .btn:active { opacity: 0.78; }
+    .btn-copy-link   { background: #5b8def; }
+    .btn-copy-code   { background: #ff7043; }
+    .btn-open       { background: #ff7043; width: auto; padding: 11px 30px; }
+
+    /* 分类标题 */
+    .section-label {
+      font-size: 14px; font-weight: 700; color: #666;
+      margin: 22px 0 12px; padding-left: 4px;
+    }
+
+    /* 子包 */
+    .sub-item {
+      border-left-color: #9b59b6;
+    }
+    .dot.purple { background: #9b59b6; }
+    .sub-name { font-size: 13.5px; color: #555; margin-bottom: 8px; font-weight: 500; }
 
     /* Toast */
     .toast {
-      position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%);
-      background: rgba(16,185,129,0.95); color: #fff;
-      padding: 8px 20px; border-radius: 8px;
-      font-size: 13px; font-weight: 600;
-      opacity: 0; transition: opacity 0.3s;
+      position: fixed; bottom: 80px; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75); color: #fff;
+      padding: 9px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 500;
+      opacity: 0; transition: opacity 0.25s;
       pointer-events: none; z-index: 999;
+      white-space: nowrap;
     }
     .toast.show { opacity: 1; }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <div class="icon">公</div>
-    <h1>公考资料合集</h1>
-    <p>夸克网盘分享 · 扫码永久有效</p>
+<div class="navbar">资料分享 - 网盘链接</div>
+
+<div class="main-card">
+
+  <div class="title-row">
+    <span class="title-icon">📚</span>
+    <span class="main-title">公考资料合集</span>
   </div>
+  <div class="subtitle">2026-2027 公考/文职/事业单位/面试 · 夸克网盘</div>
 
-  <div class="notice">
-    ⚠️ 复制提取码后打开链接，夸克APP或网页均可保存。<br>
-    链接失效请留言，会及时更新。
-  </div>
+  <div class="divider"></div>
 
-  <!-- 公考课程 -->
-  <div class="section-title">📚 公考课程资料</div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num">01</span>
-        <div class="card-title">2025年三支一扶</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">V889</span>
-      <button class="copy-code" onclick="copyText('V889', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/57965c2f7eef" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num">02</span>
-        <div class="card-title">2026JD文职课程合集</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">szLA</span>
-      <button class="copy-code" onclick="copyText('szLA', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/8b18f3e2fd57" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num">03</span>
-        <div class="card-title">2026事业单位合集</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">Jc6n</span>
-      <button class="copy-code" onclick="copyText('Jc6n', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/98d23f468ee8" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num">04</span>
-        <div class="card-title">2026面试课程合集</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">2PuL</span>
-      <button class="copy-code" onclick="copyText('2PuL', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/12870ac6bbd9" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num green">05</span>
-        <div class="card-title">2027公考精品资料包</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">kCW8</span>
-      <button class="copy-code" onclick="copyText('kCW8', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/e8ee429f8410" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num green">06</span>
-        <div class="card-title">2027名师时政课合集</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">VQMH</span>
-      <button class="copy-code" onclick="copyText('VQMH', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/00278b1a66e0" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num green">07</span>
-        <div class="card-title">2027名师精品笔记</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">iHxu</span>
-      <button class="copy-code" onclick="copyText('iHxu', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/0eda234f28a3" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num green">08</span>
-        <div class="card-title">2027国省考名师课程合集</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">ii1D</span>
-      <button class="copy-code" onclick="copyText('ii1D', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/e997a34b4d19" target="_blank">打开链接</a>
-  </div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num green">09</span>
-        <div class="card-title">2027考公上岸必刷题本</div>
-      </div>
-    </div>
-    <div class="code-row">
-      <span class="code-label">提取码：</span>
-      <span class="code-value">UXD6</span>
-      <button class="copy-code" onclick="copyText('UXD6', this)">复制</button>
-    </div>
-    <a class="open-btn" href="https://pan.quark.cn/s/2b8cbdc09022" target="_blank">打开链接</a>
-  </div>
-
-  <!-- PPT简历 -->
-  <div class="section-title">🎨 PPT · 简历模板</div>
-
-  <div class="card">
-    <div class="card-top">
-      <div class="card-left">
-        <span class="card-num purple">10</span>
-        <div class="card-title">PPT、简历大合集（5个子包）</div>
-      </div>
-    </div>
-
-    <div class="sub-links">
-      <div class="sub-item">
-        <div class="sub-title">① 11个人简历模板合集</div>
-        <div class="sub-code-row">
-          <span class="code-label" style="font-size:12px">码：</span>
-          <span class="sub-code">juec</span>
-          <a class="sub-open" href="https://pan.quark.cn/s/f8fe858755c0" target="_blank">打开 ↗</a>
-        </div>
-      </div>
-      <div class="sub-item">
-        <div class="sub-title">② 100套高端简历模板</div>
-        <div class="sub-code-row">
-          <span class="code-label" style="font-size:12px">码：</span>
-          <span class="sub-code">S3dA</span>
-          <a class="sub-open" href="https://pan.quark.cn/s/930de468b9a7" target="_blank">打开 ↗</a>
-        </div>
-      </div>
-      <div class="sub-item">
-        <div class="sub-title">③ 400套应届生简历模板</div>
-        <div class="sub-code-row">
-          <span class="code-label" style="font-size:12px">码：</span>
-          <span class="sub-code">8jLb</span>
-          <a class="sub-open" href="https://pan.quark.cn/s/6440d37d73b9" target="_blank">打开 ↗</a>
-        </div>
-      </div>
-      <div class="sub-item">
-        <div class="sub-title">④ PPT模板大合集（已分类）</div>
-        <div class="sub-code-row">
-          <span class="code-label" style="font-size:12px">码：</span>
-          <span class="sub-code">w4tS</span>
-          <a class="sub-open" href="https://pan.quark.cn/s/56fc13497b9c" target="_blank">打开 ↗</a>
-        </div>
-      </div>
-      <div class="sub-item">
-        <div class="sub-title">⑤ 空白个人简历表（42套）</div>
-        <div class="sub-code-row">
-          <span class="code-label" style="font-size:12px">码：</span>
-          <span class="sub-code">SGvy</span>
-          <a class="sub-open" href="https://pan.quark.cn/s/4b6ba890e2d2" target="_blank">打开 ↗</a>
-        </div>
-      </div>
+  <!-- ========== 01 三支一扶 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/57965c2f7eef</div>
+    <div class="code-bar">提取码：V889</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/57965c2f7eef','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('V889','复制提取码')">复制提取码</button>
     </div>
   </div>
 
-  <div class="footer">
-    资料由热心网友整理分享 · 仅供学习交流<br>
-    © 2026 扫码分享
+  <!-- ========== 02 JD文职课程 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/8b18f3e2fd57</div>
+    <div class="code-bar">提取码：szLA</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/8b18f3e2fd57','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('szLA','复制提取码')">复制提取码</button>
+    </div>
   </div>
-</div>
+
+  <!-- ========== 03 事业单位 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/98d23f468ee8</div>
+    <div class="code-bar">提取码：Jc6n</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/98d23f468ee8','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('Jc6n','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 04 面试课程 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/12870ac6bbd9</div>
+    <div class="code-bar">提取码：2PuL</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/12870ac6bbd9','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('2PuL','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 05 公考精品资料包 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/e8ee429f8410</div>
+    <div class="code-bar">提取码：kCW8</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/e8ee429f8410','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('kCW8','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 06 名师时政课 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/00278b1a66e0</div>
+    <div class="code-bar">提取码：VQMH</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/00278b1a66e0','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('VQMH','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 07 名师精品笔记 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/0eda234f28a3</div>
+    <div class="code-bar">提取码：iHxu</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/0eda234f28a3','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('iHxu','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 08 国省考名师课程 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/e997a34b4d19</div>
+    <div class="code-bar">提取码：ii1D</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/e997a34b4d19','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('ii1D','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- ========== 09 必刷题本 ========== -->
+  <div class="item quark">
+    <div class="item-header"><span class="dot blue"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="url-box">https://pan.quark.cn/s/2b8cbdc09022</div>
+    <div class="code-bar">提取码：UXD6</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/2b8cbdc09022','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('UXD6','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ===== PPT / 简历 模板 ===== -->
+  <div class="section-label">📄 PPT · 简历模板（5个子包）</div>
+
+  <!-- 11 个人简历模板 -->
+  <div class="item sub-item">
+    <div class="item-header"><span class="dot purple"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="sub-name">① 11个人简历模板合集</div>
+    <div class="url-box">https://pan.quark.cn/s/f8fe858755c0</div>
+    <div class="code-bar">提取码：juec</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/f8fe858755c0','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('juec','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- 100套高端简历 -->
+  <div class="item sub-item">
+    <div class="item-header"><span class="dot purple"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="sub-name">② 100套高端简历模板</div>
+    <div class="url-box">https://pan.quark.cn/s/930de468b9a7</div>
+    <div class="code-bar">提取码：S3dA</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/930de468b9a7','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('S3dA','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- 400套应届生简历 -->
+  <div class="item sub-item">
+    <div class="item-header"><span class="dot purple"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="sub-name">③ 400套应届生简历模板</div>
+    <div class="url-box">https://pan.quark.cn/s/6440d37d73b9</div>
+    <div class="code-bar">提取码：8jLb</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/6440d37d73b9','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('8jLb','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- PPT模板大合集 -->
+  <div class="item sub-item">
+    <div class="item-header"><span class="dot purple"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="sub-name">④ PPT模板大合集（已分类）</div>
+    <div class="url-box">https://pan.quark.cn/s/56fc13497b9c</div>
+    <div class="code-bar">提取码：w4tS</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/56fc13497b9c','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('w4tS','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+  <!-- 空白个人简历表 -->
+  <div class="item sub-item">
+    <div class="item-header"><span class="dot purple"></span><span class="platform-name">夸克网盘</span></div>
+    <div class="sub-name">⑤ 空白个人简历表（42套）</div>
+    <div class="url-box">https://pan.quark.cn/s/4b6ba890e2d2</div>
+    <div class="code-bar">提取码：SGvy</div>
+    <div class="btn-row">
+      <button class="btn btn-copy-link" onclick="copyText('https://pan.quark.cn/s/4b6ba890e2d2','复制链接')">复制链接</button>
+      <button class="btn btn-copy-code" onclick="copyText('SGvy','复制提取码')">复制提取码</button>
+    </div>
+  </div>
+
+</div><!-- end main-card -->
 
 <div class="toast" id="toast"></div>
 
 <script>
-function copyText(text, btn) {
+function copyText(text, label) {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => showToast('✅ 提取码已复制：' + text));
+    navigator.clipboard.writeText(text).then(function() {
+      showToast(label + '成功！');
+    }).catch(fallbackCopy);
   } else {
-    // fallback
-    const ta = document.createElement('textarea');
+    fallbackCopy();
+  }
+  function fallbackCopy() {
+    var ta = document.createElement('textarea');
     ta.value = text;
     document.body.appendChild(ta);
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showToast('✅ 提取码已复制：' + text);
+    showToast(label + '成功！');
   }
 }
 function showToast(msg) {
-  const t = document.getElementById('toast');
+  var t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 1800);
+  setTimeout(function(){ t.classList.remove('show'); }, 1500);
 }
 </script>
 </body>
